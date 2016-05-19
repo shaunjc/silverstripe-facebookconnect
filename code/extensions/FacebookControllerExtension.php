@@ -101,7 +101,7 @@ class FacebookControllerExtension extends Extension
 
         FacebookSession::setDefaultApplication($appId, $secret);
 
-        if (session_status() !== PHP_SESSION_ACTIVE) {
+        if (!function_exists('session_status') || session_status() !== PHP_SESSION_ACTIVE) {
             Session::start();
         }
     }
